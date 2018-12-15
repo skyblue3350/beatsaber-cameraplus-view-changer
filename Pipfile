@@ -11,6 +11,8 @@ build-ui = "pyuic5 resources/mainwindow.ui -o ui/mainwindow.py"
 "pyqt5" = "*"
 
 [dev-packages]
+flake8 = "*"
+v = {editable = true,version = "*"}
 
 [requires]
 python_version = "3.6"

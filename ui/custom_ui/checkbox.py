@@ -1,9 +1,15 @@
-from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QCheckBox, QHBoxLayout, QLabel
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import (
+    QCheckBox,
+    QHBoxLayout,
+    QLabel,
+    QWidget,
+)
 
 
 class CustomCheckBox(QWidget):
     valueChanged = pyqtSignal()
+
     def __init__(self, name, default=False):
         super(CustomCheckBox, self).__init__()
 

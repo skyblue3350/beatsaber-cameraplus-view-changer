@@ -1,10 +1,9 @@
 import sys
-import time
 import winreg
 from pathlib import Path
 
 from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 
 from ui.mainwindow import Ui_MainWindow
 from ui.custom_ui.slider import CustomSlider
@@ -61,9 +60,11 @@ class BeatsaberCameraPlusMod(QMainWindow):
 
                 for i in range(self.ui.verticalLayout.count()):
                     w = self.ui.verticalLayout.itemAt(i).widget()
-                    f.write("{name}={value}".format(name=w.name, value=w.value))
+                    f.write("{name}={value}".format(
+                        name=w.name,
+                        value=w.value))
                     f.write("\n")
-            except PermissionError as e:
+            except PermissionError:
                 continue
             else:
                 f.close()
@@ -85,13 +86,11 @@ class BeatsaberCameraPlusMod(QMainWindow):
             self.outputData()
 
             # 短時間の連続書き込み防止
-            self.timer_id = self.startTimer(1500)     
-
-
+            self.timer_id = self.startTimer(1500)
 
     def selectItem(self, text):
         with (self.preset / text).with_suffix(".cfg").open("r") as f:
-            with self.cfg.open("w") as c:      
+            with self.cfg.open("w") as c:
                 c.write(f.read())
 
     def changeItem(self):
@@ -104,7 +103,7 @@ class BeatsaberCameraPlusMod(QMainWindow):
         elif current == count:
             self.ui.listWidget.setCurrentRow(0)
         else:
-           self.ui.listWidget.setCurrentRow(current + 1)
+            self.ui.listWidget.setCurrentRow(current + 1)
 
     def switch(self, isChecked):
         if isChecked:
@@ -143,7 +142,7 @@ class BeatsaberCameraPlusMod(QMainWindow):
             subkey = winreg.OpenKey(key, name)
             try:
                 app, _ = winreg.QueryValueEx(subkey, "DisplayName")
-            except FileNotFoundError as e:
+            except FileNotFoundError:
                 pass
             else:
                 if "Beat Saber" in app:

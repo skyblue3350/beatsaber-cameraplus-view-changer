@@ -1,9 +1,16 @@
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QDoubleSpinBox, QWidget, QSlider, QHBoxLayout, QLabel
+from PyQt5.QtWidgets import (
+    QDoubleSpinBox,
+    QHBoxLayout,
+    QLabel,
+    QSlider,
+    QWidget,
+)
 
 
 class CustomDoubleSlider(QWidget):
     valueChanged = pyqtSignal()
+
     def __init__(self, name, default_value, min_value, max_value):
         super(CustomDoubleSlider, self).__init__()
 

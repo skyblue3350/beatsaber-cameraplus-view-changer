@@ -1,9 +1,16 @@
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QSlider, QHBoxLayout, QLabel, QSpinBox
+from PyQt5.QtWidgets import (
+    QHBoxLayout,
+    QLabel,
+    QSlider,
+    QSpinBox,
+    QWidget,
+)
 
 
 class CustomSlider(QWidget):
     valueChanged = pyqtSignal()
+
     def __init__(self, name, default_value, min_value, max_value):
         super(CustomSlider, self).__init__()
 
@@ -27,7 +34,6 @@ class CustomSlider(QWidget):
         self.spin.setRange(self.min_value, self.max_value)
         self.slider.setRange(self.min_value, self.max_value)
         self.slider.setValue(self.default_value)
-
 
         self.layout.addWidget(self.label, 1)
         self.layout.addWidget(self.slider, 2)
