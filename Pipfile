@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[scripts]
+app = "python main.py"
+build-ui = "pyuic5 resources/mainwindow.ui -o ui/mainwindow.py"
+
+[packages]
+"pyqt5" = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
